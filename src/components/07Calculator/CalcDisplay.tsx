@@ -14,28 +14,52 @@ function Display({
   currentNumber,
   existPrevCalc,
 }: iDisplay) {
+  const displayFormatting = (value: string) =>
+    value
+      .replaceAll(
+        /(\d+)([\.\-\+x÷])/g,
+        (m: string, p1: string, p2: string) =>
+          Number(p1).toLocaleString("en") + p2
+      )
+      .replaceAll(
+        /([\-\+x÷])(\d+)/g,
+        (m: string, p1: string, p2?: string) =>
+          p1 + Number(p2).toLocaleString("en")
+      )
+      .replace(/^(\d+)$/g, (m: string, p1: string, p2?: string) =>
+        Number(p1).toLocaleString("en")
+      )
+      .replace(
+        /(\d+)([.])$/g,
+        (m: string, p1: string, p2?: string) =>
+          Number(p1).toLocaleString("en") + p2
+      )
+      .replaceAll(
+        /([.])(\d{8,})$/g,
+        (m: string, p1: string, p2?: string) =>
+
+          p1 + p2?.substring(0,13)
+      );
   return (
     <div id="display-container">
-      <div className="display-box">
-        {existPrevCalc &&
+      <div className="display-box prev-operation-display">
+        {existPrevCalc && (
           <>
             <span className="display-span prev-operation">
               ( {prevCalculation} )
             </span>
             <span className="display-span ans">Ans: </span>
             <span className="display-span prev-result">
-              {/[x÷+-]/.test(prevResult)
-                ? prevResult
-                : Number(prevResult).toLocaleString("en")}
+              {displayFormatting(prevResult)}
             </span>
           </>
-        }
+        )}
       </div>
-      <div className="display-box">
-        <span className="display-span">
-          {/[x÷+-]/.test(currentNumber) || /^Ans$/.test(currentNumber)
+      <div className="display-box current-operation-display">
+        <span className="display-span current-operation">
+          {/^Ans$/.test(currentNumber)
             ? currentNumber
-            : Number(currentNumber).toLocaleString("en")}
+            : displayFormatting(currentNumber)}
         </span>
       </div>
     </div>

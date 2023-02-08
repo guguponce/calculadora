@@ -33,7 +33,6 @@ function App() {
         );
       }
     }
-    console.log(currentOperation);
 
     const result = calculateOperation(currentOperation);
     setCurrentNumber(result);
@@ -55,22 +54,19 @@ function App() {
     const { name } = e.target as HTMLButtonElement;
     let val: string = name;
 
-    !changedCurrentNumber && setChangedCurrentNumber(true);
     if (currentNumber === "0") {
       setCurrentNumber(val);
-      console.log(1);
+    } else if (!changedCurrentNumber) {
+      setCurrentNumber(val);
     } else if (/ |s/.test(currentNumber[currentNumber.length - 1])) {
       setCurrentNumber((prev) => prev.concat(" " + "x " + val));
-      console.log(2);
     } else {
       setCurrentNumber((prev) => prev.concat(val));
-      console.log(3);
     }
+    !changedCurrentNumber && setChangedCurrentNumber(true);
   }
 
-  useEffect(() => {
-    console.log(currentNumber);
-  }, [currentNumber]);
+  useEffect(() => {}, [currentNumber]);
 
   function handleClickHistoryD(e: React.MouseEvent<HTMLButtonElement>): void {
     e.stopPropagation();
@@ -97,29 +93,25 @@ function App() {
 
   function handleClickAns(e: React.MouseEvent<HTMLButtonElement>): void {
     if (!changedCurrentNumber) {
-      console.log(0)
       setCurrentNumber("Ans");
       setChangedCurrentNumber(true);
     } else if (/[.]/.test(currentNumber[currentNumber.length - 1])) {
-      console.log(1)
       return;
     } else if (/[0-9]/.test(currentNumber[currentNumber.length - 1])) {
-      console.log(2)
       setCurrentNumber((prev) => prev.replace(",", "").concat(" x Ans" + " "));
     } else if (/ |s/.test(currentNumber[currentNumber.length - 1])) {
-      console.log(3)
       setCurrentNumber((prev) => prev.concat(" " + "x Ans" + " "));
     } else if (/[x÷+-]/.test(currentNumber[currentNumber.length - 1])) {
-      console.log(4)
       setCurrentNumber((prev) => prev.concat(" " + "Ans" + " "));
     }
   }
 
   function handleClickFloat(e: React.MouseEvent<HTMLButtonElement>): void {
-    if (/[0-9]/.test(currentNumber[currentNumber.length - 1])) {
+    !changedCurrentNumber && setChangedCurrentNumber(true);
+    if (/[.](\d+)$/.test(currentNumber)) {
+    } else if (/[0-9]/.test(currentNumber[currentNumber.length - 1])) {
       setCurrentNumber((current) => current.concat("."));
     }
-    !changedCurrentNumber && setChangedCurrentNumber(true);
   }
 
   function handleClickOperator(e: React.MouseEvent<HTMLButtonElement>): void {
@@ -144,7 +136,6 @@ function App() {
       } else if (/[-]/.test(currentNumber[currentNumber.length - 1])) {
       }
     } else {
-      console.log(value);
       if (
         //si ultimo es minus y penultimo operador => eliminar el ultimo   x- => press x+÷ => x
         /[-]/.test(currentNumber[currentNumber.length - 1]) &&

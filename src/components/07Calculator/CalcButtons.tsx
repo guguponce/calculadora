@@ -3,6 +3,7 @@ interface iCaclButtons {
   classes: string;
   id: string;
   name: string;
+
   value?: string;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
@@ -11,13 +12,12 @@ export default function CalcButtons({
   id,
   name,
   onClick,
-  value
+  value,
 }: iCaclButtons) {
-  
 
   return (
     <button
-      key={id+Math.random()}
+      key={Math.random()+""}
       className={classes}
       id={id}
       name={name}

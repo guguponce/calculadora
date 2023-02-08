@@ -57,7 +57,6 @@ margin: 5vw auto;
           background-color: hsl(213, 40%, 55%);
           font-weight: 600;
           line-height: 2.5rem;
-          // overflow-x: hidden;
           text-align: start;
           .display-span {
             padding: 0;
@@ -83,6 +82,9 @@ margin: 5vw auto;
               color: hsl(34, 85%, 80%);
               font-weight: 600;
               overflow: auto;
+            }
+            &.current-operation{
+              overflow-x: auto;
             }
           }
         }
