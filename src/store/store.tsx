@@ -18,23 +18,7 @@ interface iRemove_Action {
   };
 }
 
-export const initialHistory: iOperation[] = [
-  {
-    operation: "1+2",
-    result: "3",
-    id: Math.random().toString(),
-  },
-  {
-    operation: "1+2",
-    result: "3",
-    id: Math.random().toString(),
-  },
-  {
-    operation: "1+2",
-    result: "3",
-    id: Math.random().toString(),
-  },
-];
+export const initialHistory: iOperation[] = [];
 
 export default function historyReducer(
   state: iOperation[],

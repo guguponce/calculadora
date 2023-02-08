@@ -8,7 +8,7 @@ import Display from "./components/07Calculator/CalcDisplay";
 // import FlipMove from "react-flip-move";
 
 function App() {
-  const [currentNumber, setCurrentNumber] = useState<string>("1+1+-4÷2--2x1");
+  const [currentNumber, setCurrentNumber] = useState<string>("0");
   const [changedCurrentNumber, setChangedCurrentNumber] =
     useState<boolean>(false);
   const [prevResult, setPrevResult] = useState<string>("0");
