@@ -25,7 +25,7 @@
     grid-template-columns: 5fr 1fr;
     justify-content: center;
     gap: 1rem;
-margin: 5vw auto;
+    margin: 5vw auto;
     #calculator {
       width: clamp(500px, 65%, 600px);
       justify-self: end;
@@ -83,7 +83,7 @@ margin: 5vw auto;
               font-weight: 600;
               overflow: auto;
             }
-            &.current-operation{
+            &.current-operation {
               overflow-x: auto;
             }
           }
@@ -105,13 +105,16 @@ margin: 5vw auto;
           margin: 1rem;
           padding: 0;
           @include flex(column, center, center);
-          border:0;
+          border: 0;
           border-radius: 5px;
           background: #4170aa;
           box-shadow: 2px 2px 5px #538ed8, -2px -2px 5px #538ed8;
           cursor: pointer;
           &:hover {
             background-color: hsl(0, 0%, 82%);
+            @media (hover: none) and (pointer: coarse) {
+              background: #4170aa;
+            }
           }
           &:active {
             background: #4170aa;
