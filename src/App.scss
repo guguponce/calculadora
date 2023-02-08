@@ -100,12 +100,12 @@ margin: 5vw auto;
         grid-template-areas: "ac del perc divide" "seven eight nine mul" "four five six min" "one two three plus" "float zer ans equal";
         justify-content: space-around;
         .btn {
-          all: unset;
           width: 50px;
           aspect-ratio: 1;
           margin: 1rem;
           padding: 0;
           @include flex(column, center, center);
+          border:0;
           border-radius: 5px;
           background: #4170aa;
           box-shadow: 2px 2px 5px #538ed8, -2px -2px 5px #538ed8;

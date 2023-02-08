@@ -109,8 +109,12 @@ function App() {
   function handleClickFloat(e: React.MouseEvent<HTMLButtonElement>): void {
     !changedCurrentNumber && setChangedCurrentNumber(true);
     if (/[.](\d+)$/.test(currentNumber)) {
+      return;
     } else if (/[0-9]/.test(currentNumber[currentNumber.length - 1])) {
       setCurrentNumber((current) => current.concat("."));
+    } else if (/([x÷\+\- ])$/.test(currentNumber)) {
+      console.log(1);
+      setCurrentNumber((current) => current.concat("0."));
     }
   }
 
@@ -336,8 +340,9 @@ function App() {
             existPrevCalc={existprevCalc}
           />
           <div id="buttons-container">
-            {buttons.map((btn) => (
+            {buttons.map((btn, i) => (
               <CalcButtons
+                ki={btn.name+i}
                 classes={btn.classes}
                 id={btn.id}
                 name={btn.name}
