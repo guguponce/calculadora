@@ -1,0 +1,105 @@
+#tipcalculator-page-container {
+    background-color: rgb(250, 242, 231);
+  #main-app-container {
+    border: 3px solid $blue-alternative;
+    @extend .flex-row-center-center;
+    .app-box {
+      width: 50%;
+      aspect-ratio: 0.8;
+      padding: 2rem;
+      @extend .flex-column-around-center;
+      &:first-child{
+        border-right: 2px solid $blue-alternative;
+      }
+      form {
+        @extend .flex-column-start-start;
+        label {
+          font-size: 1.5rem;
+        }
+        input {
+          margin: 0.3rem 0 0.5rem;
+          font-size: 1.3rem;
+          text-align: center;
+          width: 100%;
+          height: 2rem;
+          border: 0;
+          border-radius: 5px;
+          &.input-short {
+            width: calc(100% - 4rem);
+            margin: 0;
+            border-radius: 0px;
+          }
+        }
+        .input-full {
+          width: 100%;
+          @extend .flex-row-center-center;
+          margin: 0.3rem 0 0.5rem;
+          .input-btn {
+            width: 2rem;
+            height: 2rem;
+            margin: 0;
+            @extend .flex-row-center-center;
+            box-sizing: border-box;
+            border: 1px solid $blue-alternative;
+            background-color: #26313ea9;
+            color: #fefefe;
+            &#input-btn-minus {
+              border-radius: 6px 0 0 6px;
+              border: 0;
+              &:active{
+                width: 1.8rem;
+                height: 1.8rem;
+                border: 3px solid #26313e73;
+                border-right: 0;
+                margin-left: 0.2rem;
+              }
+            }
+            &#input-btn-plus {
+              border-radius: 0 6px 6px 0;
+              border: 0;
+              &:active{
+                width: 1.8rem;
+                height: 1.8rem;
+                border: 3px solid #26313e73;
+                border-left: 0;
+                margin-right: 0.2rem;
+              }
+            }
+          }
+        }
+        & > .button-plain {
+          margin: 1rem 0;
+          background-image: linear-gradient(to right, $positive-primary-color, $positive-secundary-color);
+          
+          &:active{
+            background-image: linear-gradient(to right, $positive-secundary-color, $positive-primary-color);
+          }
+        }
+      }
+      &:last-child{
+          @extend .flex-column-center-center;
+      dl {
+        margin: 3rem 0;
+        
+        padding: 0.5rem;
+        border: 1px solid $primary-color;
+        border-radius: 5px;;
+        * {
+          width: 100%;
+          margin: 0;
+          text-align: center
+        }
+        @extend .flex-column-center-center;
+        
+        dt {
+          font-weight: 700;
+          border-bottom: 1px solid $blue-alternative;
+          padding-bottom: 0.2rem;
+        }
+        dd {
+          font-size: 2rem;
+        }
+      }}
+    }
+  }
+}

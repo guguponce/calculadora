@@ -1,0 +1,78 @@
+@import "../base/Settings.scss";
+
+#convertor-page-container {
+  & > #main-app-container {
+    border: 3px solid $blue-alternative;
+    @extend .flex-column-center-center;
+    width: 80%;
+    padding: 2rem;
+
+    #conversion-types-list {
+      @extend .flex-row-center-center;
+      width: 60%;
+      grid-gap: 0.75rem;
+      padding: 0;
+      margin: 0;
+      .conversion-type {
+        list-style: none;
+        padding: 0.25rem 0.5rem;
+        border: 2px solid $blue-alternative;
+        border-radius: 5px;
+        text-transform: capitalize;
+        cursor: pointer;
+      }
+      .selected{
+        background-color: $blue-alternative;
+        color: #fefefe
+      }
+    }
+    #unit-selection-container {
+      @extend .flex-row-evenly-center;
+      width: 100%;
+      margin: 2rem 0;
+      .unit-box {
+        @extend .flex-column-start-center;
+        width: 40%;
+        border: 2px solid $blue-alternative;
+        border-radius: 5px;
+
+        .selection-label {
+          margin-bottom: 0.5rem;
+        }
+        .selection-input {
+          box-sizing: border-box;
+          width: 60%;
+          margin-bottom: 0.25rem;
+          border: 0;
+          border-radius: 5px;
+          padding: 0.5rem;
+          height: 2rem;
+        }
+        #to-result{
+          background-color: #eee;
+          border: 2px solid #cdcdcd;
+           @extend .flex-row-start-center;
+
+        }
+        .displayUnit{
+          margin: 0 0  1rem 0;
+          height: 1rem;
+        }
+        .selection-select {
+          width: 80%;
+          border: 0;
+          border-radius: 5px;
+          padding: 0.25rem 0.5rem;
+          & > option {
+            width: 100%;
+            [selected]{
+              background-color: $secundary-color;
+            }
+            &.to-unit-option{
+            }
+          }
+        }
+      }
+    }
+  }
+}

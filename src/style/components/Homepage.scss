@@ -1,0 +1,27 @@
+@import "../base/Settings.scss";
+
+
+#homepage-page-container {
+  @extend .flex-column-start-start;
+
+  h1 {
+    align-self: center;
+    text-align: center;
+  }
+  ol {
+    li {
+      margin: 0.5rem 0;
+      a {
+        margin: 0.5rem 0;
+        // padding: 0.5rem;
+        border: 0;
+        color: $blue-alternative;
+        transition: all 0.5s;
+        &:hover {
+          border-bottom: 2px solid $blue-alternative;
+          border-top: 2px solid $blue-alternative;
+        }
+      }
+    }
+  }
+}
