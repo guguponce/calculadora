@@ -33,7 +33,7 @@ function Display({
       </div>
       <div className="display-box">
         <span className="display-span">
-          {/[x÷+-]/.test(currentNumber)
+          {/[x÷+-]/.test(currentNumber) || /^Ans$/.test(currentNumber)
             ? currentNumber
             : Number(currentNumber).toLocaleString("en")}
         </span>

@@ -97,15 +97,20 @@ function App() {
 
   function handleClickAns(e: React.MouseEvent<HTMLButtonElement>): void {
     if (!changedCurrentNumber) {
+      console.log(0)
       setCurrentNumber("Ans");
       setChangedCurrentNumber(true);
     } else if (/[.]/.test(currentNumber[currentNumber.length - 1])) {
+      console.log(1)
       return;
     } else if (/[0-9]/.test(currentNumber[currentNumber.length - 1])) {
-      setCurrentNumber((prev) => prev.concat(" x Ans" + " "));
+      console.log(2)
+      setCurrentNumber((prev) => prev.replace(",", "").concat(" x Ans" + " "));
     } else if (/ |s/.test(currentNumber[currentNumber.length - 1])) {
+      console.log(3)
       setCurrentNumber((prev) => prev.concat(" " + "x Ans" + " "));
     } else if (/[x÷+-]/.test(currentNumber[currentNumber.length - 1])) {
+      console.log(4)
       setCurrentNumber((prev) => prev.concat(" " + "Ans" + " "));
     }
   }
