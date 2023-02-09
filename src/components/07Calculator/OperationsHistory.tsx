@@ -38,7 +38,6 @@ function OperationsHistory({
   }
   return (
     <div id="operations-history">
-      add percentage add transition add paper?
       <h3>History</h3>
       <ul id="past-operations-list">
         {!!history.length ? (
