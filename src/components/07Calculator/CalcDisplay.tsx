@@ -14,33 +14,36 @@ function Display({
   currentNumber,
   existPrevCalc,
 }: iDisplay) {
-  const displayFormatting = (value: string) =>
+  const displayFormatting = (value: string) =>{
     value
       .replaceAll(
         /(\d+)([\.\-\+x÷])/g,
         (m: string, p1: string, p2: string) =>
           Number(p1).toLocaleString("en") + p2
       )
-      .replaceAll(
+      value.replaceAll(
         /([\-\+x÷])(\d+)/g,
         (m: string, p1: string, p2?: string) =>
           p1 + Number(p2).toLocaleString("en")
       )
-      .replace(/^(\d+)$/g, (m: string, p1: string, p2?: string) =>
+      value.replace(/^(\d+)$/g, (m: string, p1: string, p2?: string) =>
         Number(p1).toLocaleString("en")
       )
-      .replace(
+      value.replace(
         /(\d+)([.])$/g,
         (m: string, p1: string, p2?: string) =>
           Number(p1).toLocaleString("en") + p2
       )
-      .replaceAll(
+      value.replaceAll(
         /([.])(\d{8,})$/g,
         (m: string, p1: string, p2?: string) =>
 
           p1 + p2?.substring(0,13)
       );
-  return (
+      return value
+    
+    }
+      return (
     <div id="display-container">
       <div className="display-box prev-operation-display">
         {existPrevCalc && (
